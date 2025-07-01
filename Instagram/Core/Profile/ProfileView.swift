@@ -45,8 +45,8 @@ struct ProfileView: View {
                     // name and bio
                     VStack(alignment: .leading, spacing: 4) {
                         Text("Chadwick Bozeman")
-                            .font(.footnote)
-                            .fontWeight(.semibold)
+                            .font(.system(size: 14, weight: .semibold))
+                        
                         
                         Text("Wakanda Forever")
                             .font(.footnote)
@@ -61,8 +61,7 @@ struct ProfileView: View {
                         
                     } label: {
                         Text("Edit Profile")
-                            .font(.subheadline)
-                            .fontWeight(.semibold)
+                            .font(.system(size: 14, weight: .semibold))
                             .frame(width: 360, height: 32)
                             .foregroundStyle(.black)
                             .overlay(
