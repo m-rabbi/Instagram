@@ -7,29 +7,17 @@
 
 import SwiftUI
 
+import SwiftUI
+
 struct SearchView: View {
     @State private var searchText: String = ""
+    
     var body: some View {
         NavigationStack {
             ScrollView {
                 LazyVStack(spacing: 12) {
-                    ForEach(0 ... 15, id: \.self){ user in
-                        HStack {
-                            Image("batman-1")
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 40, height: 40)
-                                .clipShape(Circle())
-                            VStack(alignment: .leading) {
-                                Text("batman")
-                                    .fontWeight(.semibold)
-                                Text("Bruce Wayne")
-                            }
-                            .font(.system(size: 14))
-                            
-                            Spacer()
-                        }
-                        .padding(.horizontal)
+                    ForEach(User.MOCK_USERS) { user in
+                        UserRowView(user: user)
                     }
                 }
                 .padding(.top, 8)
@@ -41,6 +29,8 @@ struct SearchView: View {
     }
 }
 
-#Preview {
+
+
+#Preview {s
     SearchView()
 }
