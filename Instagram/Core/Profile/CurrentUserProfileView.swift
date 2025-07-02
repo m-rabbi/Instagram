@@ -1,15 +1,13 @@
 //
-//  ProfileView.swift
+//  CurrentUserProfileView.swift
 //  Instagram
 //
-//  Created by Md Rabbi on 6/30/25.
+//  Created by Md Rabbi on 7/1/25.
 //
 
 import SwiftUI
 
-struct ProfileView: View {
-    let user: User
-    
+struct CurrentUserProfileView: View {
     private let columns: [GridItem] = [
         .init(.flexible(), spacing: 1),
         .init(.flexible(), spacing: 1),
@@ -18,12 +16,13 @@ struct ProfileView: View {
         ]
     
     var body: some View {
+        NavigationStack {
             ScrollView {
                 // header
                 VStack(spacing: 10) {
                     // pic and stats
                     HStack {
-                        Image(user.profileImageUrl ?? "placeholder-image")
+                        Image("black-panther")
                             .resizable()
                             .scaledToFill()
                             .frame(width: 80, height: 80)
@@ -44,14 +43,12 @@ struct ProfileView: View {
                     
                     // name and bio
                     VStack(alignment: .leading, spacing: 4) {
-                        if let fullname = user.fullname {
-                            Text(fullname)
-                                .font(.system(size: 14, weight: .semibold))
-                        }
-                        if let bio = user.bio {
-                            Text(bio)
-                                .font(.footnote)
-                        }
+                        Text("Chadwick Bozeman")
+                            .font(.system(size: 14, weight: .semibold))
+                        
+                        
+                        Text("Wakanda Forever")
+                            .font(.footnote)
                         
                     }
                     .frame(maxWidth: .infinity, alignment: .leading)
@@ -82,7 +79,7 @@ struct ProfileView: View {
                 LazyVGrid(columns: columns, spacing: 1) {
                     ForEach(0 ... 15, id: \.self) { index in
                         
-                        Image(user.profileImageUrl ?? "placeholder-image")
+                        Image("black-panther-2")
                             .resizable()
                             .scaledToFill()
                     }
@@ -91,7 +88,6 @@ struct ProfileView: View {
             }
             .navigationTitle("Profile")
             .navigationBarTitleDisplayMode(.inline)
-            .tint(.black)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button {
@@ -103,9 +99,10 @@ struct ProfileView: View {
 
                 }
             }
+        }
     }
 }
 
 #Preview {
-    ProfileView(user: User.MOCK_USERS[0])
+    CurrentUserProfileView()
 }

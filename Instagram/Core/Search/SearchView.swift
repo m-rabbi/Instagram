@@ -17,20 +17,29 @@ struct SearchView: View {
             ScrollView {
                 LazyVStack(spacing: 12) {
                     ForEach(User.MOCK_USERS) { user in
-                        UserRowView(user: user)
+                        NavigationLink(value: user) {
+                            UserRowView(user: user)
+                        }
                     }
                 }
                 .padding(.top, 8)
                 .searchable(text: $searchText, prompt: "Search...")
             }
+            .navigationDestination(for: User.self, destination: { user in
+                ProfileView(user: user)
+            })
             .navigationTitle("Explore")
             .navigationBarTitleDisplayMode(.inline)
         }
+        .tint(.black)
+
+
+
     }
 }
 
 
 
 #Preview {
-    SearchView()
+        SearchView()
 }

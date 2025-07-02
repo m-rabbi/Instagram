@@ -35,5 +35,5 @@ struct UserRowView: View {
 }
 
 #Preview {
-    UserRowView(user: User.MOCK_USERS.first!)
+    UserRowView(user: User.MOCK_USERS[0])
 }
