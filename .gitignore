@@ -15,3 +15,6 @@ DerivedData/
 # SwiftPM
 Packages/
 .build/
+
+# Firebase
+GoogleService-Info.plist
