@@ -55,7 +55,26 @@ extension Post {
             imageUrl: "black-panther",
             timestamp: Date().addingTimeInterval(-259200), // 3 days ago
             user: User.MOCK_USERS[3]
+        ),
+        .init(
+            id: NSUUID().uuidString,
+            ownerUid: NSUUID().uuidString,
+            caption: "We are Venom.",
+            likes: 334,
+            imageUrl: "venom-1",
+            timestamp: Date().addingTimeInterval(-518400), // ~6 days ago
+            user: User.MOCK_USERS[1]
+        ),
+        .init(
+            id: NSUUID().uuidString,
+            ownerUid: NSUUID().uuidString,
+            caption: "Hungry for justice... and maybe a snack 🕷️",
+            likes: 289,
+            imageUrl: "venom-2",
+            timestamp: Date().addingTimeInterval(-604800), // ~7 days ago
+            user: User.MOCK_USERS[1]
         )
+
     ]
 }
 
