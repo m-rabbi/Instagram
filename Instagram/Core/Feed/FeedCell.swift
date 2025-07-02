@@ -14,14 +14,16 @@ struct FeedCell: View {
         VStack {
             // user
             HStack {
-                Image("batman-2")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 40, height: 40)
-                    .clipShape(Circle())
-                
-                Text("batman")
-                    .font(.system(size: 14, weight: .semibold))
+                if let user = post.user {
+                    Image(user.profileImageUrl ?? "placeholder-image")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40, height: 40)
+                        .clipShape(Circle())
+                    
+                    Text(user.username)
+                        .font(.system(size: 14, weight: .semibold))
+                }
                 
                 Spacer()
             }
@@ -29,7 +31,7 @@ struct FeedCell: View {
             
             // post image
             
-            Image("batman-1")
+            Image(post.imageUrl)
                 .resizable()
                 .scaledToFill()
                 .frame(height: 400)
@@ -69,7 +71,7 @@ struct FeedCell: View {
             
             // likes label
             
-            Text("23 likes")
+            Text("\(post.likes) likes")
                 .font(.system(size: 14, weight: .semibold))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 8)
@@ -77,8 +79,8 @@ struct FeedCell: View {
             
             // caction label
             HStack {
-                Text("batman ").fontWeight(.semibold) +
-                Text("This is some test caption")
+                Text("\(post.user?.username ?? "") ").fontWeight(.semibold) +
+                Text(post.caption)
             }
             .font(.system(size: 14))
             .frame(maxWidth: .infinity, alignment: .leading)
@@ -98,5 +100,5 @@ struct FeedCell: View {
 }
 
 #Preview {
-    FeedCell(post: Post.MOCK_POSTS[0])
+    FeedCell(post: Post.MOCK_POSTS[2])
 }
