@@ -17,6 +17,8 @@ struct ProfileView: View {
         
     ]
     
+    private let imageDimension: CGFloat = (UIScreen.main.bounds.width / 3) - 1
+    
     var posts: [Post] {
         return Post.MOCK_POSTS.filter({ $0.user?.username == user.username })
     }
@@ -88,6 +90,8 @@ struct ProfileView: View {
                     Image(post.imageUrl)
                         .resizable()
                         .scaledToFill()
+                        .frame(width: imageDimension, height: imageDimension)
+                        .clipped()
                 }
                 
             }
