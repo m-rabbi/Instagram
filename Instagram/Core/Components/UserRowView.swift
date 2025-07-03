@@ -12,9 +12,10 @@ struct UserRowView: View {
     
     var body: some View {
         HStack {
-            Image(user.profileImageUrl ?? "placeholder-image")
+            Image(systemName: "person.circle")
                 .resizable()
                 .scaledToFill()
+                .foregroundStyle(.gray)
                 .frame(width: 40, height: 40)
                 .clipShape(Circle())
             
