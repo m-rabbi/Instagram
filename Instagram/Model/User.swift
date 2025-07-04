@@ -45,7 +45,7 @@ extension User {
             username: "ironman",
             profileImageUrl: nil,
             fullname: "Tony Stark",
-            bio: "🧠 Inventor. 💰 Billionaire. 💥 Philanthropist. I am Iron Man.",
+            bio: "Inventor. Billionaire. Philanthropist. I am Iron Man.",
             email: "tony@starkindustries.com"
         ),
         .init(

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct Post: Identifiable, Codable, Hashable {
     let id: String
@@ -13,7 +14,7 @@ struct Post: Identifiable, Codable, Hashable {
     let caption: String
     var likes: Int
     let imageUrl: String
-    let timestamp: Date
+    let timestamp: Timestamp
     var user: User?
     
 }
@@ -26,7 +27,7 @@ extension Post {
             caption: "Gotham needs me. No days off.",
             likes: 142,
             imageUrl: "batman-2",
-            timestamp: Date(),
+            timestamp: Timestamp(),
             user: User.MOCK_USERS[0]
         ),
         .init(
@@ -35,7 +36,7 @@ extension Post {
             caption: "Suit upgrade complete. Ready for battle!",
             likes: 310,
             imageUrl: "ironman",
-            timestamp: Date().addingTimeInterval(-86400), // 1 day ago
+            timestamp: Timestamp(),
             user: User.MOCK_USERS[2]
         ),
         .init(
@@ -44,7 +45,7 @@ extension Post {
             caption: "With great power comes great responsibility 🕷️",
             likes: 420,
             imageUrl: "spiderman",
-            timestamp: Date().addingTimeInterval(-172800), // 2 days ago
+            timestamp: Timestamp(),
             user: User.MOCK_USERS[4]
         ),
         .init(
@@ -53,7 +54,7 @@ extension Post {
             caption: "Wakanda forever ✊🏿",
             likes: 275,
             imageUrl: "black-panther",
-            timestamp: Date().addingTimeInterval(-259200), // 3 days ago
+            timestamp: Timestamp(),
             user: User.MOCK_USERS[3]
         ),
         .init(
@@ -62,7 +63,7 @@ extension Post {
             caption: "We are Venom.",
             likes: 334,
             imageUrl: "venom-1",
-            timestamp: Date().addingTimeInterval(-518400), // ~6 days ago
+            timestamp: Timestamp(),
             user: User.MOCK_USERS[1]
         ),
         .init(
@@ -71,7 +72,7 @@ extension Post {
             caption: "Hungry for justice... and maybe a snack 🕷️",
             likes: 289,
             imageUrl: "venom-2",
-            timestamp: Date().addingTimeInterval(-604800), // ~7 days ago
+            timestamp: Timestamp(), 
             user: User.MOCK_USERS[1]
         )
 
