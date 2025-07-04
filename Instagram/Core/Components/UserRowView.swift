@@ -12,12 +12,7 @@ struct UserRowView: View {
     
     var body: some View {
         HStack {
-            Image(systemName: "person.circle")
-                .resizable()
-                .scaledToFill()
-                .foregroundStyle(.gray)
-                .frame(width: 40, height: 40)
-                .clipShape(Circle())
+            CircularProfileImageView(user: user, size: .xsmall)
             
             VStack(alignment: .leading) {
                 Text(user.username)
