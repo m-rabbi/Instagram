@@ -27,7 +27,7 @@ extension User {
         .init(
             id: UUID().uuidString,
             username: "batman",
-            profileImageUrl: "batman-2",
+            profileImageUrl: nil,
             fullname: "Bruce Wayne",
             bio: "👤 Billionaire by day, vigilante by night. Protecting Gotham one shadow at a time.",
             email: "batman@wayneindustries.com"
@@ -35,7 +35,7 @@ extension User {
         .init(
             id: UUID().uuidString,
             username: "venom",
-            profileImageUrl: "venom-2",
+            profileImageUrl:nil,
             fullname: "Eddie Brock",
             bio: "🕷️ Not your friendly neighborhood symbiote. We are Venom.",
             email: "eddie@venomverse.com"
@@ -43,7 +43,7 @@ extension User {
         .init(
             id: UUID().uuidString,
             username: "ironman",
-            profileImageUrl: "ironman",
+            profileImageUrl: nil,
             fullname: "Tony Stark",
             bio: "🧠 Inventor. 💰 Billionaire. 💥 Philanthropist. I am Iron Man.",
             email: "tony@starkindustries.com"
@@ -51,7 +51,7 @@ extension User {
         .init(
             id: UUID().uuidString,
             username: "blackpanther",
-            profileImageUrl: "black-panther",
+            profileImageUrl: nil,
             fullname: "T'Challa",
             bio: "🖤 King of Wakanda. Wakanda forever.",
             email: "tchalla@wakanda.gov"
@@ -59,7 +59,7 @@ extension User {
         .init(
             id: UUID().uuidString,
             username: "spiderman",
-            profileImageUrl: "spiderman",
+            profileImageUrl: nil,
             fullname: "Peter Parker",
             bio: "📸 Photographer. 🕸️ Web developer. Just your friendly neighborhood Spider-Man.",
             email: "peter@dailybugle.com"

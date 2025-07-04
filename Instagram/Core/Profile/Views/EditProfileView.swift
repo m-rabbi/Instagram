@@ -66,13 +66,7 @@ struct EditProfileView: View {
                             .background(.gray)
                             .clipShape(Circle())
                     } else {
-                        Image(systemName: "person.circle")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 100, height: 100)
-                            .foregroundStyle(.white)
-                            .background(.gray)
-                            .clipShape(Circle())
+                        CircularProfileImageView(user: viewModel.user)
                     }
                     
                     Text("Edit profile picture")
