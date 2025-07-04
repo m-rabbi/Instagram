@@ -39,8 +39,14 @@ class EditProfileViewModel: ObservableObject {
         // update profile image if changed
         
         // update name if changed
+        if user.fullname != fullname && !fullname.isEmpty{
+            print("DEBUG: Update fullname: \(fullname)")
+        }
         
         // update bio if changed
+        if user.bio != bio && !bio.isEmpty{
+            print("DEBIG: update bio: \(bio)")
+        }
         
     }
 }
