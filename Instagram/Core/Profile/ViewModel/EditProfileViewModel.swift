@@ -10,6 +10,9 @@ import Firebase
 import SwiftUI
 
 class EditProfileViewModel: ObservableObject {
+    
+    @Published var user: User
+    
     @Published  var fullname = ""
     @Published  var bio = ""
     
@@ -19,6 +22,10 @@ class EditProfileViewModel: ObservableObject {
     
     @Published var profileImage: Image?
     
+    init(user: User) {
+        self.user = user
+    }
+    
     @MainActor
     func loadImage(fromItem item: PhotosPickerItem?) async {
         guard let item = item else { return }
@@ -26,5 +33,14 @@ class EditProfileViewModel: ObservableObject {
         guard let data = try? await item.loadTransferable(type: Data.self) else { return }
         guard let uiImage = UIImage(data: data) else { return }
         self.profileImage = Image(uiImage: uiImage)
+    }
+    
+    func updateUserData() async throws {
+        // update profile image if changed
+        
+        // update name if changed
+        
+        // update bio if changed
+        
     }
 }
