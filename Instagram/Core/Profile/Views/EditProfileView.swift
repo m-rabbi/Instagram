@@ -87,7 +87,7 @@ struct EditProfileView: View {
             VStack {
                 EditProfileRowView(title: "Name", placeholder: "Enter your name...", text: $viewModel.fullname)
                 
-                EditProfileRowView(title: "BIo", placeholder: "Enter your bio...", text: $viewModel.bio)
+                EditProfileRowView(title: "Bio", placeholder: "Enter your bio...", text: $viewModel.bio)
 
             }
             
