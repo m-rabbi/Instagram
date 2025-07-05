@@ -80,11 +80,13 @@ struct FeedCell: View {
             
             // likes label
             
-            Text("\(post.likes) likes")
-                .font(.system(size: 14, weight: .semibold))
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.leading, 8)
-                .padding(.top, 1)
+            if post.likes > 0 {
+                Text("\(post.likes) likes")
+                    .font(.system(size: 14, weight: .semibold))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.leading, 8)
+                    .padding(.top, 1)
+            }
             
             // caction label
             HStack {

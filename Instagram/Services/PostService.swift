@@ -51,6 +51,14 @@ extension PostService {
         async let _ = try await postsCollection.document(post.id).updateData(["likes": post.likes - 1])
         async let _ = try await Firestore.firestore().collection("users").document(uid).collection("user-likes").document(post.id).delete()
     }
+    
+    static func checkIfUserLikedPost(_ post: Post) async throws -> Bool {
+        guard let uid = Auth.auth().currentUser?.uid else { return false }
+        
+        let snapshot = try await Firestore.firestore().collection("users").document(uid).collection("user-likes").document(post.id).getDocument()
+        return snapshot.exists
+
+    }
 }
 
 
