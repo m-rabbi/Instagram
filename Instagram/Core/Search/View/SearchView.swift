@@ -32,7 +32,7 @@ struct SearchView: View {
             .navigationTitle("Explore")
             .navigationBarTitleDisplayMode(.inline)
         }
-        .tint(.black)
+        .tint(.primary)
 
 
 
