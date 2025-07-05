@@ -19,7 +19,7 @@ struct EditProfileRowView: View {
                     .frame(width: 100, alignment: .leading)
                 
                 VStack {
-                    TextField(placeholder, text: $text, axis: .horizontal)
+                    TextField(placeholder, text: $text, axis: .vertical)
                     
                     
                     Divider()

@@ -34,7 +34,7 @@ struct CommentsView: View {
                 CircularProfileImageView(user: User.MOCK_USERS[0], size: .xsmall)
                 
                 ZStack(alignment: .trailing) {
-                    TextField("Add a comment...", text: $commentText)
+                    TextField("Add a comment...", text: $commentText, axis: .vertical )
                         .font(.footnote)
                         .padding(12)
                         .padding(.trailing, 40)
