@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class FeedCellViewModel: ObservableObject {
     @Published var post: Post
     
@@ -15,8 +16,17 @@ class FeedCellViewModel: ObservableObject {
     }
     
     func like() async throws {
-        post.didLike = true
-        post.likes += 1
+ 
+        do {
+            let postCopy = post
+            post.didLike = true
+            post.likes += 1
+            try await PostService.likePost(postCopy)
+
+        } catch {
+            post.didLike = false
+            post.likes -= 1
+        }
     }
     
     func unlike() async throws {

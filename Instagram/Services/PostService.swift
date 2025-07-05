@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseAuth
 
 struct PostService {
     
@@ -30,6 +31,22 @@ struct PostService {
         return snapshot.documents.compactMap( { try? $0.data(as: Post.self) })
     }
     
+}
+
+// MARK: - Likes
+
+extension PostService {
+    static func likePost(_ post: Post) async throws {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        async let _ = try await postsCollection.document(post.id).collection("post-likes").document(uid).setData([:])
+        async let _ = try await postsCollection.document(post.id).updateData(["likes": post.likes + 1])
+        async let _ = try await Firestore.firestore().collection("users").document(uid).collection("user-likes").document(post.id).setData([ : ])
+    }
+    
+    static func unlikePost(_ post: Post) async throws {
+        
+    }
 }
 
 
