@@ -26,6 +26,7 @@ class CommentsViewModel: ObservableObject {
         let comment = Comment(postOwnerUid: post.ownerUid, commentText: commentText, postId: post.id, timestamp: Timestamp(), commentOwnerUid: uid)
         
         try await service.uploadComment(comment)
+        try await fetchComments()
     }
     
     @MainActor

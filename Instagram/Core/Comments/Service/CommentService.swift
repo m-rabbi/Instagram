@@ -19,7 +19,7 @@ struct CommentService {
     }
     
     func fetchComment() async throws -> [Comment] {
-        let snapshot = try await Firestore.firestore().collection("posts").document(postId).collection("post-comments").getDocuments()
+        let snapshot = try await Firestore.firestore().collection("posts").document(postId).collection("post-comments").order(by: "timestamp", descending: true).getDocuments()
         
         return snapshot.documents.compactMap( { try? $0.data(as: Comment.self) } )
     }
