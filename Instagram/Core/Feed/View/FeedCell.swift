@@ -110,7 +110,7 @@ struct FeedCell: View {
             
         }
         .sheet(isPresented: $showComments, content: {
-            CommentsView()
+            CommentsView(post: post)
                 .presentationDragIndicator(.visible)
         })
     }

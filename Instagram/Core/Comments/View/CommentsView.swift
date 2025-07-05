@@ -9,6 +9,12 @@ import SwiftUI
 
 struct CommentsView: View {
     @State private var commentText = ""
+    @StateObject var viewModel: CommentsViewModel
+ 
+    
+    init(post: Post){
+        self._viewModel = StateObject(wrappedValue: CommentsViewModel(post: post))
+    }
     
     var body: some View {
         VStack {
@@ -21,8 +27,8 @@ struct CommentsView: View {
             
             ScrollView {
                 LazyVStack(spacing: 24) {
-                    ForEach(0 ... 15, id: \.self) { comment in
-                        CommentCell()
+                    ForEach(viewModel.comments) { comment in
+                        CommentCell(comment: comment)
                     }
                 }
             }
@@ -44,7 +50,9 @@ struct CommentsView: View {
                         }
                     
                     Button {
-                        
+                        Task {
+                            try await viewModel.uploadComment(commentText: commentText)
+                        }
                     } label: {
                         Text("Post")
                             .font(.subheadline)
@@ -52,7 +60,7 @@ struct CommentsView: View {
                             .foregroundStyle(Color(.systemBlue))
                     }
                     .padding(.horizontal)
-
+                    
                 }
             }
             .padding()
@@ -62,5 +70,5 @@ struct CommentsView: View {
 }
 
 #Preview {
-    CommentsView()
+    CommentsView(post: Post.MOCK_POSTS[0])
 }
