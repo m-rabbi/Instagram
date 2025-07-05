@@ -9,7 +9,15 @@ import SwiftUI
 import Kingfisher
 
 struct FeedCell: View {
-    let post: Post
+    @ObservedObject var viewModel: FeedCellViewModel
+    
+    init(post: Post) {
+        self.viewModel = FeedCellViewModel(post: post)
+    }
+    
+    private var post: Post {
+        return viewModel.post
+    }
     
     var body: some View {
         VStack {
@@ -96,5 +104,5 @@ struct FeedCell: View {
 }
 
 #Preview {
-    FeedCell(post: Post.MOCK_POSTS[2])
+    FeedCell(post: Post.MOCK_POSTS[0])
 }
