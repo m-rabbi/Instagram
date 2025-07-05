@@ -19,6 +19,10 @@ struct FeedCell: View {
         return viewModel.post
     }
     
+    private var didLike: Bool {
+        return post.didLike ?? false
+    }
+    
     var body: some View {
         VStack {
             // user
@@ -44,10 +48,11 @@ struct FeedCell: View {
             // action buttons
             HStack(spacing: 16) {
                 Button {
-                    print("Like")
+                    handleLikeTapped()
                 } label: {
-                    Image(systemName: "heart")
+                    Image(systemName: didLike ? "heart.fill" : "heart")
                         .imageScale(.large)
+                        .foregroundStyle(didLike ? .red : .black)
                         
                 }
                 
@@ -99,6 +104,16 @@ struct FeedCell: View {
             
 
             
+        }
+    }
+    
+    private func handleLikeTapped() {
+        Task {
+            if didLike {
+                try await viewModel.unlike()
+            } else {
+                try await viewModel.like()
+            }
         }
     }
 }
