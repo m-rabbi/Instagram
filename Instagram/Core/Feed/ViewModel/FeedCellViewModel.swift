@@ -30,7 +30,15 @@ class FeedCellViewModel: ObservableObject {
     }
     
     func unlike() async throws {
-        post.didLike = false
-        post.likes -= 1
+        do {
+            let postCopy = post
+            post.didLike = false
+            post.likes -= 1
+            try await PostService.likePost(postCopy)
+
+        } catch {
+            post.didLike = true
+            post.likes += 1
+        }
     }
 }
