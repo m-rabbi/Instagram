@@ -30,6 +30,31 @@ class UserService {
         let snapshot = try await FirebaseConstants.UsersCollection.getDocuments()
         return snapshot.documents.compactMap( { try? $0.data(as: User.self) })
     }
+    
+    static func fetchUsers(forConfig config: UserListConfig) async throws -> [User] {
+        switch config {
+        case .followers(let uid):
+            return try await fetchFollowers(uid: uid)
+        case .following(let uid):
+            return try await fetchFollowing(uid: uid)
+        case .likes(let postId):
+            return try await fetchPostLikesUsers(postId: postId)
+        case .explore:
+            return try await fetchAllUsers()
+        }
+    }
+    
+    private static func fetchFollowers(uid: String) async throws -> [User] {
+        return []
+    }
+    
+    private static func fetchFollowing(uid: String) async throws -> [User] {
+        return []
+    }
+    
+    private static func fetchPostLikesUsers(postId: String) async throws -> [User] {
+        return []
+    }
 }
 
 

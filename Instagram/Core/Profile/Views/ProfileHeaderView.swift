@@ -127,7 +127,7 @@ struct ProfileHeaderView: View {
             
             
         }
-        navigationDestination(for: UserListConfig.self, destination: { config in
+        .navigationDestination(for: UserListConfig.self, destination: { config in
             Text(config.navigationTitle)
         })
         .onAppear {
