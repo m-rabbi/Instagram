@@ -13,6 +13,7 @@ class ProfileViewModel: ObservableObject {
     
     init(user: User) {
         self.user = user
+        checkIfUserIsFollowed()
     }
 }
 
@@ -33,6 +34,8 @@ extension ProfileViewModel {
     }
     
     func checkIfUserIsFollowed() {
-        
+        Task {
+            self.user.isFollowed = try await UserService.checkIfUserIsFollowed(uid: user.id)
+        }
     }
 }
