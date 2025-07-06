@@ -74,11 +74,18 @@ struct ProfileHeaderView: View {
                     
                     NavigationLink(value: UserListConfig.followers(uid: user.id)) {
                         UserStatView(value: stats.followersCount, title: "Followers")
+                            .navigationDestination(for: User.self, destination: { user in
+                                ProfileView(user: user)
+                            })
+                        
 
                     }
                     
                     NavigationLink(value: UserListConfig.following(uid: user.id)) {
                         UserStatView(value: stats.followingCount, title: "Following")
+                            .navigationDestination(for: User.self, destination: { user in
+                                ProfileView(user: user)
+                            })
 
                     }
                     
