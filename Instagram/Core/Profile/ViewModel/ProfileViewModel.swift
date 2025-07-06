@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class ProfileViewModel: ObservableObject {
     @Published var user: User
     
@@ -18,11 +19,17 @@ class ProfileViewModel: ObservableObject {
 // MARK: - Following
 extension ProfileViewModel {
     func follow() {
-        user.isFollowed = true
+        Task {
+            try await UserService.follow(uid: user.id)
+            user.isFollowed = true
+        }
     }
     
     func unfollow() {
-        user.isFollowed = false
+        Task {
+            try await UserService.unfollow(uid: user.id)
+            user.isFollowed = false
+        }
     }
     
     func checkIfUserIsFollowed() {
