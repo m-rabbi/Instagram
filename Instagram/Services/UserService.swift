@@ -45,15 +45,29 @@ class UserService {
     }
     
     private static func fetchFollowers(uid: String) async throws -> [User] {
-        return []
+        let snapshot = try await FirebaseConstants.FollowersCollection.document(uid).collection("user-followers").getDocuments()
+        return try await fetchUsers(snapshot)
+
     }
     
     private static func fetchFollowing(uid: String) async throws -> [User] {
-        return []
+        let snapshot = try await FirebaseConstants.FollowingCollection.document(uid).collection("user-following").getDocuments()
+        return try await fetchUsers(snapshot)
+
     }
     
     private static func fetchPostLikesUsers(postId: String) async throws -> [User] {
         return []
+    }
+    
+    private static func fetchUsers(_ snapshot: QuerySnapshot) async throws -> [User] {
+        var users = [User]()
+        
+        for doc in snapshot.documents {
+            users.append(try await fetchUser(withUid: doc.documentID))
+        }
+        
+        return users
     }
 }
 
