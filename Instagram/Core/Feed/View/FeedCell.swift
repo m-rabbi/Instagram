@@ -99,7 +99,7 @@ struct FeedCell: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(.leading, 8)
             
-            Text("6h ago")
+            Text(post.timestamp.timestampString())
                 .font(.system(size: 14))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 8)
