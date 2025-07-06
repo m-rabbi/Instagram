@@ -59,6 +59,6 @@ class AuthService {
         UserService.shared.currentUser = user
         guard let encodedUser = try? Firestore.Encoder().encode(user) else { return }
         
-        try? await Firestore.firestore().collection("users").document(uid).setData(encodedUser)
+        try? await FirebaseConstants.UsersCollection.document(uid).setData(encodedUser)
     }
 }
