@@ -15,6 +15,10 @@ struct ProfileHeaderView: View {
         return viewModel.user
     }
     
+    private var stats: UserStats {
+        return user.stats ?? .init(followingCount: 0, followersCount: 0, postsCount: 0)
+    }
+    
     private var isFollowed: Bool {
         return user.isFollowed ?? false
     }
@@ -66,11 +70,11 @@ struct ProfileHeaderView: View {
                 Spacer()
                 
                 HStack(spacing: 8) {
-                    UserStatView(value: 3, title: "Posts")
+                    UserStatView(value: stats.postsCount, title: "Posts")
                     
-                    UserStatView(value: 12, title: "Followers")
+                    UserStatView(value: stats.followersCount, title: "Followers")
                     
-                    UserStatView(value: 24, title: "Following")
+                    UserStatView(value: stats.followingCount, title: "Following")
                 }
                 
             }
