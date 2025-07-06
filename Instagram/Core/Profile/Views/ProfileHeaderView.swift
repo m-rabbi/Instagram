@@ -27,6 +27,32 @@ struct ProfileHeaderView: View {
         }
     }
     
+    private var buttonBackgroundColor: Color {
+        if user.isCurrentUser || isFollowed {
+            return .white
+        } else {
+            return Color(.systemBlue)
+        }
+    }
+    
+    private var buttonForegroundColor: Color {
+        if user.isCurrentUser || isFollowed {
+            return .black
+        } else {
+            return .white
+        }
+    }
+    
+    private var buttonBorderColor: Color {
+        if user.isCurrentUser || isFollowed {
+            return .gray
+        } else {
+            return .clear
+        }
+    }
+
+
+    
     init(user: User){
         self.viewModel = ProfileViewModel(user: user)
     }
@@ -77,12 +103,12 @@ struct ProfileHeaderView: View {
                 Text(buttonTitle)
                     .font(.system(size: 14, weight: .semibold))
                     .frame(width: 360, height: 32)
-                    .background(user.isCurrentUser ? .white : Color(red: 0/255, green: 149/255, blue: 246/255) )
-                    .foregroundStyle(user.isCurrentUser ? .black : .white)
+                    .background(buttonBackgroundColor)
+                    .foregroundStyle(buttonForegroundColor)
                     .cornerRadius(6)
                     .overlay(
                         RoundedRectangle(cornerRadius: 6)
-                            .stroke(user.isCurrentUser ? Color.gray : .clear, lineWidth: 1)
+                            .stroke(buttonBorderColor, lineWidth: 1)
                     )
             }
             
