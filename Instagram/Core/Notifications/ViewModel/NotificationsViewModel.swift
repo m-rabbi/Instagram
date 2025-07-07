@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class NotificationsViewModel: ObservableObject {
     @Published var notifications = [Notification]()
     
@@ -19,7 +20,6 @@ class NotificationsViewModel: ObservableObject {
         }
     } 
     
-    @MainActor
     func fetchNotifications() async {
         do {
             self.notifications = try await service.fetchNotification()
