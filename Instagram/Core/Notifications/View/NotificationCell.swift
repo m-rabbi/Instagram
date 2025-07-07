@@ -34,13 +34,15 @@ struct NotificationCell: View {
             Spacer()
             
             if notification.type != .follow {
-                KFImage(URL(string: notification.post?.imageUrl ?? ""))
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 40, height: 40)
-                    .clipped()
-                    .cornerRadius(8)
-                    .padding(.leading, 2)
+                NavigationLink(value: notification.post ) {
+                    KFImage(URL(string: notification.post?.imageUrl ?? ""))
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 40, height: 40)
+                        .clipped()
+                        .cornerRadius(8)
+                        .padding(.leading, 2)
+                }
             } else {
                 Button {
                     print("Handle follow here")
