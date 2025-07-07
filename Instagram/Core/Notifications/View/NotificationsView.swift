@@ -20,6 +20,9 @@ struct NotificationsView: View {
                     }
                 }
             }
+            .navigationDestination(for: User.self, destination: { user in
+                ProfileView(user: user)
+            })
             .navigationTitle("Notifications")
             .navigationBarTitleDisplayMode(.inline)
         }

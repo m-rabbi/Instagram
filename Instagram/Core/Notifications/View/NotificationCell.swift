@@ -13,7 +13,9 @@ struct NotificationCell: View {
     
     var body: some View {
         HStack {
-            CircularProfileImageView(user: notification.user, size: .xsmall)
+            NavigationLink(value: notification.user) {
+                CircularProfileImageView(user: notification.user, size: .xsmall)
+            }
             
             // notification message
             HStack {
@@ -37,7 +39,7 @@ struct NotificationCell: View {
                     .scaledToFill()
                     .frame(width: 40, height: 40)
                     .clipped()
-                    .cornerRadius(10)
+                    .cornerRadius(8)
                     .padding(.leading, 2)
             } else {
                 Button {
