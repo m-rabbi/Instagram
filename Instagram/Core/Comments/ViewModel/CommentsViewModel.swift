@@ -27,6 +27,8 @@ class CommentsViewModel: ObservableObject {
         
         try await service.uploadComment(comment)
         try await fetchComments()
+        
+        try await NotificationManager.shared.uploadCommentNotification(toUid: post.ownerUid, post: post)
     }
     
     @MainActor

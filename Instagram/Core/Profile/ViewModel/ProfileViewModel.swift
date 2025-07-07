@@ -29,6 +29,8 @@ extension ProfileViewModel {
         Task {
             try await UserService.follow(uid: user.id)
             user.isFollowed = true
+            
+            try await NotificationManager.shared.uploadFollowNotification(toUid: user.id)
         }
     }
     
