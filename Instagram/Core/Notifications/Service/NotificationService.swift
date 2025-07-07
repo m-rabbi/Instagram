@@ -30,6 +30,15 @@ class NotificationService {
     }
     
     func deleteNotification(toId uid: String, type: NotificationType, post: Post? = nil) async throws {
+        guard let currentUid = Auth.auth().currentUser?.uid, uid != currentUid else { return }
         
+        let snapshot = try await FirebaseConstants.UserNotificationCollection(uid: uid).whereField("notificationSenderUid", isEqualTo: currentUid).getDocuments()
+        
+        let notifications = snapshot.documents.compactMap( { try? $0.data(as: Notification.self) } )
+        
+        let filteredByType = notifications.filter({ $0.type == type })
+        guard let notificationToDelete = filteredByType.first(where: { $0.postId == post?.id }) else { return }
+        
+        try await FirebaseConstants.UserNotificationCollection(uid: uid).document(notificationToDelete.id).delete()
     }
 }

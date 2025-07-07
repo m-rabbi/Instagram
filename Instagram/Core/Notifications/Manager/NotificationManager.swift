@@ -30,4 +30,12 @@ class NotificationManager {
         try await  service.uploadNotification(toUid: uid, type: .follow)
 
     }
+    
+    func deleteLikeNotification(notificationOwnerUid: String, post: Post) async {
+        do {
+            try await service.deleteNotification(toId: notificationOwnerUid, type: .like, post: post)
+        } catch {
+            print("DEBUG: Error deleting like notification")
+        }
+    }
 }

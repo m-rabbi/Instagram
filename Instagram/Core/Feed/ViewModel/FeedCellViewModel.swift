@@ -36,7 +36,9 @@ class FeedCellViewModel: ObservableObject {
             let postCopy = post
             post.didLike = false
             post.likes -= 1
-            try await PostService.likePost(postCopy)
+            try await PostService.unlikePost(postCopy)
+            
+            await NotificationManager.shared.deleteLikeNotification(notificationOwnerUid: post.ownerUid, post: post)
 
         } catch {
             post.didLike = true
