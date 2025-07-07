@@ -10,11 +10,21 @@ import Foundation
 class NotificationsViewModel: ObservableObject {
     @Published var notifications = [Notification]()
     
-    init() {
-        fetchNotifications()
-    }
+    private let service: NotificationService
     
-    func fetchNotifications() {
-        self.notifications = DeveloperPreview.shared.notifications
+    init(service: NotificationService) {
+        self.service = service
+        Task {
+            await fetchNotifications()
+        }
+    } 
+    
+    @MainActor
+    func fetchNotifications() async {
+        do {
+            self.notifications = try await service.fetchNotification()
+        } catch {
+            print("DEBUG: Failed to fetch notifications: \(error.localizedDescription)")
+        }
     }
 }
