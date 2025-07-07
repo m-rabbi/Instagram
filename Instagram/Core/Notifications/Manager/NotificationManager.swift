@@ -38,4 +38,12 @@ class NotificationManager {
             print("DEBUG: Error deleting like notification")
         }
     }
+    
+    func deleteFollowNotification(notificationOwnerUid: String) async {
+        do {
+            try await service.deleteNotification(toId: notificationOwnerUid, type: .follow)
+        } catch {
+            print("DEBUG: Error deleting follow notification")
+        }
+    }
 }

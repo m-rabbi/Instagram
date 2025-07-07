@@ -37,8 +37,19 @@ class NotificationService {
         let notifications = snapshot.documents.compactMap( { try? $0.data(as: Notification.self) } )
         
         let filteredByType = notifications.filter({ $0.type == type })
-        guard let notificationToDelete = filteredByType.first(where: { $0.postId == post?.id }) else { return }
         
-        try await FirebaseConstants.UserNotificationCollection(uid: uid).document(notificationToDelete.id).delete()
+        if type == .follow {
+            for notification in filteredByType {
+                try await FirebaseConstants.UserNotificationCollection(uid: uid).document(notification.id).delete()
+
+            }
+
+        } else {
+            guard let notificationToDelete = filteredByType.first(where: { $0.postId == post?.id }) else { return }
+            
+            try await FirebaseConstants.UserNotificationCollection(uid: uid).document(notificationToDelete.id).delete()
+        }
+        
+      
     }
 }
