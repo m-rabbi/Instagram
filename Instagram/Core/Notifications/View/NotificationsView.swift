@@ -20,6 +20,9 @@ struct NotificationsView: View {
                     }
                 }
             }
+            .refreshable {
+                Task { await viewModel.fetchNotifications() }
+            }
             .navigationDestination(for: Post.self, destination: { post in
                 FeedCell(post: post)
             })
