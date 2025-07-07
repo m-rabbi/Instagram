@@ -58,5 +58,5 @@ struct NotificationCell: View {
 }
 
 #Preview {
-    NotificationCell(notification: DeveloperPreview.shared.notifications[2 ])
+    NotificationCell(notification: DeveloperPreview.shared.notifications[2])
 }
