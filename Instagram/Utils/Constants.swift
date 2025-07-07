@@ -16,4 +16,7 @@ struct  FirebaseConstants {
     
     static let FollowersCollection = Root.collection("followers")
     static let FollowingCollection = Root.collection("following")
+    
+    static let NotificationCollection = Root.collection("notifications")
+    
 }
