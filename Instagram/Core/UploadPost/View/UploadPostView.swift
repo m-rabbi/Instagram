@@ -54,7 +54,11 @@ struct UploadPostView: View {
                         .scaledToFill()
                         .frame(width: 100, height: 100)
                         .clipped()
-
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .stroke(Color.gray, lineWidth: 2)
+                        )
+                        .cornerRadius(12)
                 }
                 
                 TextField("Enter your caption...", text: $caption, axis: .vertical)
