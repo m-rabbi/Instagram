@@ -65,7 +65,7 @@ struct UploadPostView: View {
             Spacer()
         }
         .onAppear {
-            imagePickerPresented.toggle()
+            imagePickerPresented = true
         }
         .photosPicker(isPresented: $imagePickerPresented, selection: $viewModel.selectedImage)
     }

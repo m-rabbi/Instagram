@@ -26,6 +26,7 @@ struct MainTabView: View {
                 .tag(1)
             
             UploadPostView(tabIndex: $selectedIndex)
+                .id(selectedIndex == 2 ? UUID().uuidString : "upload")
                 .tabItem {
                     Image(systemName: "plus.square")
                 }
