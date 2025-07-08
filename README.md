@@ -1,94 +1,89 @@
-# Instagram Clone (SwiftUI)
+# Instagram Clone
 
-**📱 A complete Instagram style app built in SwiftUI**, designed and developed to replicate Instagram's core and modern social media app functionalities, built from scratch to demonstrate real-world iOS development skills.
-
----
-
-## 🚀 Features
-
-### Core Features
-- **Feed**: Infinite scroll, double-tap to like, like/comment buttons, timestamped posts, swipeable media carousel.
-- **Authentication**: Email/password login, signup, password reset, and persistent sessions (Firebase Auth).
-- **Post Creation**: Photo/video upload, caption input, basic cropping, and media storage (Firebase Storage & Firestore).
-- **Profile**: Customizable profile (bio, picture), view own and other users’ posts in a grid and list layout.
-- **Comments**: Add/view comments on posts, like individual comments, dynamic keyboard handling.
-- **Explore**: User and hashtag search, trending posts grid view.
-- **Notifications**: Feed badge for new likes, comments, followers.
-- **Direct Messages (DMs)**: Real-time one-on-one chat with image/text support (via Firebase Firestore).
-- **Settings**: Profile editing, logout, dark mode toggle.
-
-### UI/UX & Tech Stack
-- SwiftUI & UIKit integration for camera/media picker.
-- MVVM architecture with Combine and async/await.
-- Custom reusable components (buttons, cards, modals).
-- Responsive layout for iPhones & iPads.
-- Light & Dark Mode styling.
-
-### Bonus
-- Pull-to-refresh in Feed & Messages.
-- Carousel post loader; shimmer effect during data fetch.
-- Haptic feedback on like/comment actions.
-- Custom app icon & launch screen.
+A full-featured Instagram clone iOS app built with **SwiftUI** and **Firebase**.
 
 ---
 
-## 🛠 Tech Stack
+## Overview
 
-- **Language**: Swift 
-- **UI**: SwiftUI, `UIViewControllerRepresentable` for camera & picker  
-- **Backend**: Firebase (Auth, Firestore, Storage)  
-- **Architecture**: MVVM, Combine, async/await  
-- **Tools**: Xcode 15+, Git, CocoaPods / Swift Package Manager  
-- **Third-party libs**: Kingfisher (image caching), Shimmer (loading effect)
+This project is a scalable, modern Instagram clone designed to demonstrate proficiency in building production-quality iOS apps using SwiftUI and Firebase. It covers core social media features including:
 
----
+- User authentication with Firebase Auth
+- Feed displaying posts with images and captions
+- Search functionality to discover other users and posts
+- Upload new posts with image picker and caption input
+- Notifications for user interactions
+- Profile screens displaying user info and post grid
+- Real-time updates and data fetching with async/await
 
-## ⚙️ Getting Started
-
-### Prerequisites
-- Xcode 15+  
-- iOS 16+ Simulator or real device  
-- Swift 5.8+  
-- Firebase CLI / Firebase Console setup with config files 
-
-### Setup
-
-1. Clone the repo:
-    ```bash
-    git clone https://github.com/m-rabbi/Instagram.git
-    cd Instagram
-    ```
-
-2. Install dependencies:
-    - *Swift Packages* auto-resolved in Xcode on open
-      ```
-
-3. Firebase config:
-   - Add `GoogleService-Info.plist` from your Firebase project root → `Instagram/`
-   - Ensure Firebase Auth, Firestore, Storage are enabled
-
-4. Run the project:
-   - For **Simulator**: no signing required
-   - For **Device**: Go to **Signing & Capabilities** → set your own Apple ID team
-
-5. Build & run: ⌘ + R
-
-### Capabilities
-- Sign In / Sign Up / Reset password  
-- Upload posts and stories  
-- View and interact: Feed, Profiles, Explore, Reels, Notifications, Comments, DMs  
-- Light / Dark mode, haptics, pull-to-refresh
+The app showcases advanced SwiftUI patterns such as `@StateObject`, bindings, environment objects, and efficient view lifecycle handling, including dynamic view resets using `.id()` modifiers.
 
 ---
 
-## 🎯 Highlights
+## Features
 
-- **Component-based SwiftUI UI**: modular views with clear separation
-- **Modern concurrency**: async/await for network and DB operations
-- **MVVM + Combine**: reactive app logic with observable bindings
-- **Smooth user experience**: image caching, pull-to-refresh, loading animations
-- **Auth & Realtime data**: fully backed by Firebase features
-- **Polished design**: adaptive layout, consistent icons & style
+- **Authentication:** Sign up, login, and sign out using Firebase Authentication
+- **Feed:** Display posts with image caching (Kingfisher integration), likes, and captions
+- **Search:** Search users and posts with live filtering
+- **Upload:** Select photos from device using PhotosUI, add captions, and upload to Firebase Storage & Firestore
+- **Notifications:** View likes and interactions on your posts
+- **Profile:** View your profile and other users’ profiles, including posts grid and stats
+- **UI/UX:** Clean, modern design with toolbar actions, smooth tab navigation, and responsive layouts
+- **State Management:** Proper use of `@State`, `@StateObject`, and view model patterns
+- **View Reset:** Implements view and view model reset logic on tab changes to prevent stale UI state (e.g., resetting the upload view on each access)
+- **Image Picker:** Automatically opens photo picker when switching to upload tab for seamless UX
 
 ---
 
+## Tech Stack
+
+- SwiftUI — declarative UI framework for iOS
+- Firebase — backend services for Auth, Firestore, and Storage
+- PhotosUI — native photo picker integration
+- Kingfisher — efficient image downloading and caching
+- Async/Await — modern concurrency for network and database operations
+
+---
+
+## Project Structure
+
+- **Views:** Modular SwiftUI views per feature (FeedView, SearchView, UploadPostView, NotificationsView, ProfileViews)
+- **ViewModels:** MVVM architecture managing business logic and data fetching
+- **Services:** Firebase services handling authentication, user management, and post operations
+
+---
+
+## Installation
+
+1. Clone the repository  
+   ```bash
+   git clone https://github.com/m-rabbi/Instagram.git
+   ```
+2. Open `Instagram.xcodeproj` in Xcode  
+3. Install dependencies (e.g., Firebase, Kingfisher) via Swift Package Manager  
+4. Configure your Firebase project and add `GoogleService-Info.plist`  
+5. Build and run on simulator or device
+
+---
+
+## Usage
+
+- Launch the app and sign up or login with your credentials  
+- Browse the feed to view posts from other users  
+- Search for users and posts via the search tab  
+- Tap the plus icon to upload a new photo with caption  
+- View notifications for interactions on your posts  
+- Access your profile to see your posts and statistics  
+- Use the logout button in the profile tab to sign out
+
+---
+
+## About the Developer
+
+Md Rabbi is an aspiring iOS developer focused on building clean, scalable apps with SwiftUI and Firebase. This project serves as a showcase of skills in UI design, state management, and backend integration.
+
+---
+
+## License
+
+This project is licensed under the MIT License.
