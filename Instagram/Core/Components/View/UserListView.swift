@@ -13,6 +13,17 @@ struct UserListView: View {
     
     private let config: UserListConfig
     
+    private var filteredUsers: [User] {
+        if searchText.isEmpty {
+            return viewModel.users
+        } else {
+            return viewModel.users.filter { user in
+                user.username.localizedCaseInsensitiveContains(searchText) ||
+                (user.fullname?.localizedCaseInsensitiveContains(searchText) ?? false)
+            }
+        }
+    }
+    
     init(config: UserListConfig) {
         self.config = config
     }
@@ -20,7 +31,7 @@ struct UserListView: View {
     var body: some View {
         ScrollView {
             LazyVStack(spacing: 12) {
-                ForEach(viewModel.users) { user in
+                ForEach(filteredUsers) { user in
                     NavigationLink(value: user) {
                         UserRowView(user: user)
                     }
