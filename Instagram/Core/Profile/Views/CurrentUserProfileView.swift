@@ -34,6 +34,9 @@ struct CurrentUserProfileView: View {
 
                 }
             }
+            .navigationDestination(for: Post.self, destination: { post in
+                FeedCell(post: post)
+            })
         }
     }
 }

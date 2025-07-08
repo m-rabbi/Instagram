@@ -31,9 +31,11 @@ struct ProfileView: View {
                     Image(systemName: "line.3.horizontal")
                         .tint(.black)
                 }
-                
             }
         }
+        .navigationDestination(for: Post.self, destination: { post in
+            FeedCell(post: post)
+        })
     }
 }
 
