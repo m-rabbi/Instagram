@@ -30,10 +30,15 @@ struct FeedCell: View {
             // user
             HStack {
                 if let user = post.user {
-                    CircularProfileImageView(user: user, size: .xsmall)
-                    
-                    Text(user.username)
-                        .font(.system(size: 14, weight: .semibold))
+                    NavigationLink(destination: ProfileView(user: user)) {
+                        HStack {
+                            CircularProfileImageView(user: user, size: .xsmall)
+                            
+                            Text(user.username)
+                                .font(.system(size: 14, weight: .semibold))
+                                .foregroundStyle(.primary)
+                        }
+                    }
                 }
                 
                 Spacer()
@@ -92,9 +97,21 @@ struct FeedCell: View {
             }
             
             // caption label
-            HStack {
-                Text("\(post.user?.username ?? "") ").fontWeight(.semibold) +
-                Text(post.caption)
+            HStack(alignment: .top, spacing: 0) {
+                if let user = post.user {
+                    NavigationLink(destination: ProfileView(user: user)) {
+                        Text(user.username)
+                            .fontWeight(.semibold)
+                            .foregroundStyle(.primary)
+                    }
+                    Text(" ")
+                    Text(post.caption)
+                } else {
+                    Text("\(post.user?.username ?? "") ")
+                        .fontWeight(.semibold)
+                    Text(post.caption)
+                }
+                Spacer()
             }
             .font(.system(size: 14))
             .frame(maxWidth: .infinity, alignment: .leading)
