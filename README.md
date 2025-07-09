@@ -11,7 +11,7 @@ A full-featured Instagram clone iOS app built with **SwiftUI** and **Firebase**,
 
 ## 📱 Screenshots
 
-*[Add screenshots of your app here - this is crucial for recruiters to see your UI/UX skills]*
+*[Screenshots*
 
 ---
 

@@ -19,6 +19,11 @@ struct FeedView: View {
                     }
                 }
             }
+            .refreshable {
+                Task {
+                    try? await viewModel.fetchPosts()
+                }
+            }
             .padding(.top, 8)
             .navigationTitle("Feed")
             .navigationBarTitleDisplayMode(.inline)

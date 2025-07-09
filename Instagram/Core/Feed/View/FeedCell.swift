@@ -118,10 +118,10 @@ struct FeedCell: View {
             .padding(.leading, 8)
             
             Text(post.timestamp.timestampString())
-                .font(.system(size: 14))
+                .font(.system(size: 12))
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.leading, 8)
-                .padding(.top, 1)
+                .offset(y: 1)
                 .foregroundStyle(.secondary)
             
 
