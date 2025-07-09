@@ -11,7 +11,7 @@ A full-featured Instagram clone iOS app built with **SwiftUI** and **Firebase**,
 
 ## 📱 Screenshots
 
-*[Screenshots*
+*[Screenshots]*
 
 ---
 
@@ -257,7 +257,7 @@ While this is primarily a portfolio project, I welcome feedback and suggestions 
 
 - Open issues for bugs or feature requests
 - Submit pull requests for improvements
-- Connect with me on [LinkedIn](https://linkedin.com/in/your-profile) or [GitHub](https://github.com/m-rabbi)
+- Connect with me on [LinkedIn](https://linkedin.com) or [GitHub](https://github.com/m-rabbi)
 
 ---
 
