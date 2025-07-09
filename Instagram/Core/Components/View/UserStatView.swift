@@ -18,7 +18,7 @@ struct UserStatView: View {
 
             
             Text(title)
-                .font(.system(size: 14, weight: .semibold))
+                .font(.system(size: 14, weight: .medium))
         }
         .opacity(value == 0 ? 0.5 : 1)
         .frame(width: 76)    }

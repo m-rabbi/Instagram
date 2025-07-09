@@ -55,87 +55,28 @@ struct ProfileHeaderView: View {
         }
     }
 
-
-    
     init(user: User){
         self.viewModel = ProfileViewModel(user: user)
     }
     
     var body: some View {
         VStack(spacing: 10) {
-            // pic and stats
-            HStack {
-                CircularProfileImageView(user: user, size: .large)
-                
-                Spacer()
-                
-                HStack(spacing: 8) {
-                    UserStatView(value: stats.postsCount, title: "Posts")
-                    
-                    NavigationLink(value: UserListConfig.followers(uid: user.id)) {
-                        UserStatView(value: stats.followersCount, title: "Followers")
-                            .navigationDestination(for: User.self, destination: { user in
-                                ProfileView(user: user)
-                            })
-                        
-
-                    }
-                    
-                    NavigationLink(value: UserListConfig.following(uid: user.id)) {
-                        UserStatView(value: stats.followingCount, title: "Following")
-                            .navigationDestination(for: User.self, destination: { user in
-                                ProfileView(user: user)
-                            })
-
-                    }
-                    
-                }
-                
-            }
-            .padding(.horizontal)
+            // Profile picture and stats
+            profileAndStatsSection
             
-            // name and bio
-            VStack(alignment: .leading, spacing: 4) {
-                if let fullname = user.fullname {
-                    Text(fullname)
-                        .font(.system(size: 14, weight: .semibold))
-                }
-                if let bio = user.bio {
-                    Text(bio)
-                        .font(.footnote)
-                }
-                
-            }
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal)
+            // Name and bio
+            nameAndBioSection
             
-            // action button
-            
-            Button {
-                if user.isCurrentUser {
-                    showEditProfileView.toggle()
-                } else {
-                    handleFollowTapped()
-                }
-            } label: {
-                Text(buttonTitle)
-                    .font(.system(size: 14, weight: .semibold))
-                    .frame(width: 360, height: 32)
-                    .background(buttonBackgroundColor)
-                    .foregroundStyle(buttonForegroundColor)
-                    .cornerRadius(6)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 6)
-                            .stroke(buttonBorderColor, lineWidth: 1)
-                    )
-            }
+            // Action button
+            actionButtonSection
             
             Divider()
-            
-            
         }
         .navigationDestination(for: UserListConfig.self, destination: { config in
             UserListView(config: config)
+        })
+        .navigationDestination(for: User.self, destination: { user in
+            ProfileView(user: user)
         })
         .onAppear {
             viewModel.checkIfUserIsFollowed()
@@ -144,10 +85,74 @@ struct ProfileHeaderView: View {
         .fullScreenCover(isPresented: $showEditProfileView) {
             EditProfileView(user: user)
         }
-
     }
     
-    func handleFollowTapped() {
+    // MARK: - UI Components
+    
+    private var profileAndStatsSection: some View {
+        HStack {
+            CircularProfileImageView(user: user, size: .large)
+            
+            Spacer()
+            
+            HStack(spacing: 8) {
+                UserStatView(value: stats.postsCount, title: "Posts")
+                
+                NavigationLink(value: UserListConfig.followers(uid: user.id)) {
+                    UserStatView(value: stats.followersCount, title: "Followers")
+                }
+                
+                NavigationLink(value: UserListConfig.following(uid: user.id)) {
+                    UserStatView(value: stats.followingCount, title: "Following")
+                }
+            }
+        }
+        .padding(.horizontal)
+    }
+    
+    private var nameAndBioSection: some View {
+        VStack(alignment: .leading, spacing: 4) {
+            if let fullname = user.fullname {
+                Text(fullname)
+                    .font(.system(size: 14, weight: .semibold))
+            }
+            if let bio = user.bio {
+                Text(bio)
+                    .font(.footnote)
+            }
+        }
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .padding(.horizontal)
+    }
+    
+    private var actionButtonSection: some View {
+        Button {
+            handleActionButtonTapped()
+        } label: {
+            Text(buttonTitle)
+                .font(.system(size: 14, weight: .semibold))
+                .frame(width: 360, height: 32)
+                .background(buttonBackgroundColor)
+                .foregroundStyle(buttonForegroundColor)
+                .cornerRadius(6)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 6)
+                        .stroke(buttonBorderColor, lineWidth: 1)
+                )
+        }
+    }
+    
+    // MARK: - Actions
+    
+    private func handleActionButtonTapped() {
+        if user.isCurrentUser {
+            showEditProfileView.toggle()
+        } else {
+            handleFollowTapped()
+        }
+    }
+    
+    private func handleFollowTapped() {
         if isFollowed {
             viewModel.unfollow()
         } else {
