@@ -6,20 +6,23 @@ A full-featured Instagram clone iOS app built with **SwiftUI** and **Firebase**,
 [![SwiftUI](https://img.shields.io/badge/SwiftUI-5.0-blue.svg)](https://developer.apple.com/xcode/swiftui/)
 [![Firebase](https://img.shields.io/badge/Firebase-10.0-yellow.svg)](https://firebase.google.com)
 [![iOS](https://img.shields.io/badge/iOS-17.0+-lightgrey.svg)](https://developer.apple.com/ios/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 ---
 
-## 📱 Screenshots
+## 📱 Demo
 
-*[Screenshots]*
+![Signup Flow Demo](Assets/signup.gif)
+
+*Interactive signup flow demonstrating the smooth user experience*
 
 ---
 
-## 🎯 Overview
+## 🎯 Project Overview
 
 This project is a **production-quality Instagram clone** designed to demonstrate advanced iOS development skills using modern SwiftUI patterns and Firebase backend services. As a self-taught developer, this project showcases my ability to build complex, scalable applications with clean architecture and best practices.
 
-### Key Technical Achievements:
+### 🏆 Key Technical Achievements
 - **MVVM Architecture**: Clean separation of concerns with dedicated ViewModels
 - **Real-time Data Sync**: Firebase Firestore integration with live updates
 - **Advanced SwiftUI Patterns**: `@StateObject`, `@EnvironmentObject`, custom bindings
@@ -29,14 +32,14 @@ This project is a **production-quality Instagram clone** designed to demonstrate
 
 ---
 
-## ✨ Features
+## ✨ Core Features
 
 ### 🔐 Authentication & User Management
 - **Firebase Authentication**: Secure sign up, login, and session management
 - **Multi-step Registration**: Email verification, username creation, password setup
 - **Profile Management**: Edit profile information, bio, and profile pictures
 
-### 📱 Core Social Features
+### 📱 Social Features
 - **Feed System**: Infinite scroll with image caching and lazy loading
 - **Post Creation**: Photo picker integration with caption support
 - **Like System**: Real-time like/unlike functionality
@@ -53,15 +56,9 @@ This project is a **production-quality Instagram clone** designed to demonstrate
 - **Tab Navigation**: State-aware navigation with view resets
 - **Image Optimization**: Efficient image loading with placeholder states
 
-### 🏗️ Technical Architecture
-- **MVVM Pattern**: Clean separation of business logic and UI
-- **Dependency Injection**: Environment objects for shared state
-- **Async/Await**: Modern concurrency for network operations
-- **Error Handling**: Comprehensive error states and user feedback
-
 ---
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
 ### Frontend
 - **SwiftUI 5.0** — Declarative UI framework with advanced state management
@@ -105,32 +102,7 @@ Views (SwiftUI) ↔ ViewModels (Business Logic) ↔ Services (Data Layer)
 
 ---
 
-## 📁 Project Structure
-
-```
-Instagram/
-├── App/
-│   └── InstagramApp.swift          # App entry point with Firebase config
-├── Core/
-│   ├── Authentication/             # Auth flow with multi-step registration
-│   ├── Comments/                   # Comment system with real-time updates
-│   ├── Components/                 # Reusable UI components
-│   ├── Feed/                      # Main feed with infinite scroll
-│   ├── Notifications/             # Notification system
-│   ├── Profile/                   # User profile management
-│   ├── Root/                      # Main app navigation
-│   ├── Search/                    # User and content search
-│   ├── TabBar/                    # Tab navigation system
-│   └── UploadPost/                # Post creation flow
-├── Extensions/                    # Swift extensions and utilities
-├── Model/                         # Data models and mock data
-├── Services/                      # Firebase service layer
-└── Utils/                         # Constants and helper functions
-```
-
----
-
-## 🚀 Installation & Setup
+## 🚀 Getting Started
 
 ### Prerequisites
 - Xcode 15.0 or later
@@ -138,7 +110,8 @@ Instagram/
 - Firebase project setup
 - Apple Developer Account (for device testing)
 
-### Quick Start
+### Installation Steps
+
 1. **Clone the repository**
    ```bash
    git clone https://github.com/m-rabbi/Instagram.git
@@ -163,7 +136,7 @@ Instagram/
    - Select your target device or simulator
    - Press `Cmd + R` to build and run
 
-### Environment Setup
+### Firebase Configuration
 ```swift
 // Firebase configuration is handled in InstagramApp.swift
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -177,7 +150,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 ---
 
-## 📖 Usage Guide
+## 📖 User Guide
 
 ### Getting Started
 1. **Launch the app** and create a new account or sign in
@@ -204,10 +177,16 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 - **Consistent Naming**: Clear, descriptive variable and function names
 - **Modular Architecture**: Reusable components and services
 - **Performance**: Efficient data fetching and UI updates
+- **Error Handling**: Comprehensive error states and user feedback
+
+### Performance Optimizations
+- **Lazy Loading**: Images and content loaded on-demand
+- **Memory Management**: Efficient image caching and cleanup
+- **Network Optimization**: Minimal API calls with smart caching
 
 ---
 
-## 🚀 Future Enhancements
+## 🚀 Roadmap
 
 ### Planned Features
 - [ ] **Direct Messaging**: Real-time chat functionality
