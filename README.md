@@ -13,8 +13,9 @@ A full-featured Instagram clone iOS app built with **SwiftUI** and **Firebase**,
 ## 📱 Demo
 
 ![Signup Flow Demo](Assets/signup.gif)
+![Edit Profile Demo](Assets/editProfile.gif)
 
-*Interactive signup flow demonstrating the smooth user experience*
+*Interactive signup and profile editing flows demonstrating the smooth user experience*
 
 ---
 
