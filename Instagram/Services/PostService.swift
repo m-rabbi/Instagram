@@ -12,7 +12,9 @@ import FirebaseAuth
 struct PostService {
         
     static func fetchFeedPosts() async throws -> [Post] {
-        let snapshot = try await FirebaseConstants.PostsCollection.getDocuments()
+        let snapshot = try await FirebaseConstants.PostsCollection
+            .order(by: "timestamp", descending: true)
+            .getDocuments()
         var posts = snapshot.documents.compactMap( { try? $0.data(as: Post.self) })
         
         for i in 0 ..< posts.count {
