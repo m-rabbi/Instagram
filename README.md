@@ -12,12 +12,24 @@ A full-featured Instagram clone iOS app built with **SwiftUI** and **Firebase**,
 
 ## 📱 Demo
 
-| 🔐 Signup Flow | | | | | | | ✏️ Edit Profile |
-|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| ![Signup Flow Demo](Assets/signup.gif) | | | | | | | ![Edit Profile Demo](Assets/editProfile.gif) |
+### 🔐 User Authentication & Registration
+![Signup Flow Demo](Assets/signup.gif)
 
+*Complete user registration flow with email verification, username creation, and password setup*
 
-*Interactive signup and profile editing flows demonstrating the smooth user experience*
+### ✏️ Profile Management
+![Edit Profile Demo](Assets/editProfile.gif)
+
+*Profile editing interface with bio updates, profile picture changes, and user information management*
+
+### ❤️ Social Interactions & Notifications
+![Follow, Like, Comment & Notifications Demo](Assets/followLikeCommentAndNotifications.gif)
+
+*Real-time social features including follow/unfollow, like/unlike, commenting, and comprehensive notification system*
+
+---
+
+*All demos showcase the smooth, production-ready user experience with real-time updates and intuitive interactions*
 
 ---
 
